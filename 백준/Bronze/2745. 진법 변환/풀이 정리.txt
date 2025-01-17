@@ -1,19 +1,21 @@
-# 알파벳 대문자 리스트 만들기
+● 알파벳 대문자 리스트 만들기
 import string
 alphbet = [i for i in string.ascii_uppercase]
+(소문자는 ascii_lowercase)
 
-1. 런타임 에러 (KeyError): 딕셔너리에서 값을 잘못 받아올 때 발생
+
+1. 런타임 에러(KeyError): 딕셔너리에서 값을 잘못 받아올 때 발생
 alpha_dict['A'] -> alpha_dict.get('A')
 
-2. [2745] 문제의 경우 문제 뿐만 아니라 숫자가 자리수로 들어올 수 있음.
-예) 1A3WZ
 
-따라서 문자 자리수와 숫자 자리수에 대한 처리 따로해주어야 함.
+2. [2745] 문제의 경우 문자 뿐만 아니라 숫자가 자릿수로 들어올 수 있음. 예) 1A3WZ
+따라서 문자 자릿수와 숫자 자릿수에 대한 처리 따로해주어야 함.
 if n[i] in alpha_dict:
         result += alpha_dict.get(n[idx]) * (b**i)
     else:
         result += int(n[idx]) * (b**i)
 
-3. 자리수는 첫째자리부터 계산 되어야 함. 뒤에서부터 계산
+
+3. 자릿수는 첫째자리부터 계산 되어야 함. 뒤에서부터 계산
 for i in range(len(n)):
     idx = len(n) - i - 1
