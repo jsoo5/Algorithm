@@ -31,7 +31,7 @@ prime_judge = [True] * len(numbers)
 # 2부터 제곱근까지의 배수 비교를 위해 반복
 for mul in range(2, sqrt_num+1):
   for num in range(mul*mul, n+1, mul):  # 소수 제거에 자기 자신을 포함하면 안되므로 소수*소수로 배수부터 시작
-    if num >= m:  # 판별하려는 수가 범위에 없으면 안됨(Index Error 발생) (예: 5부터 범위인데 2*2=4는 비교할 수 없음)
+    if num >= m:  # [num -m]이 음수가 되지 않도록 추가 (없을 시 Index Error 발생)
       prime_judge[num - m] = False  # 숫자 리스트와 길이만 맞추고 인덱스는 일치시키지 않았으므로 시작 범위만큼 빼줌
 
 if numbers[0] == 1:
