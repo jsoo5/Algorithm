@@ -3,16 +3,15 @@ import sys
 def calc_gcd_n_lcm(int1, int2):
     bigger = max(int1, int2)
     smaller = min(int1, int2)
-    remainder = bigger % smaller
 
-    if remainder == 0:
+    if bigger % smaller == 0:
         return smaller, a * b // smaller
     
-    elif remainder == 1:
+    elif bigger % smaller == 1:
         return 1, a * b
     
     else:
-        return calc_gcd_n_lcm(smaller, remainder)
+        return calc_gcd_n_lcm(smaller, bigger % smaller)
     
 a, b = map(int, sys.stdin.readline().strip().split())
 gcd, lcm = calc_gcd_n_lcm(a, b)
