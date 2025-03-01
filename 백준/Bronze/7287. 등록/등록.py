@@ -1,0 +1,1 @@
+print(73,'jsoo5', sep='\n')
