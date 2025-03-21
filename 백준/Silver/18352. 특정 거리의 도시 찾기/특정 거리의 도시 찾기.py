@@ -9,25 +9,27 @@ for _ in range(m):
     graph[v].append(u)
 # print(graph)
 
-visited = [False] * (n + 1)
-distance = [0] * (n + 1)
+distance = [-1] * (n + 1)
+result = []
 
 def bfs(start):
     queue = deque([start])
-    visited[start] = True
+    distance[start] = 0
 
     while queue:
         node = queue.popleft()
         for i in graph[node]:
-            if not visited[i]:
+            if distance[i] == -1:
                 queue.append(i)
-                visited[i] = True
                 distance[i] = distance[node] + 1
-bfs(x)
+            
+                if distance[i] == k:
+                    result.append(i)
+    return result
 
-if k in distance:
-    for i in range(len(distance)):
-        if distance[i] == k:
-            print(i)
-else:
+answer = bfs(x)
+
+if not answer:
     print(-1)
+else:
+    print('\n'.join(map(str, sorted(answer))))
