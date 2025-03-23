@@ -1,22 +1,15 @@
 import sys
 input = sys.stdin.readline
 
-memo = {}
-
-def fibonacci(n):    
-    memo[0] = 0
-    memo[1] = 1
-    if n in memo:
-        return memo[n]
-    memo[n] = fibonacci(n - 1) + fibonacci(n - 2)
-    return memo[n]
+MAX_N = 41
+fib = [(0, 1)] * MAX_N
+fib[0] = (1, 0)
+fib[1] = (0, 1)
     
 T = int(input())
 for _ in range(T):
     n = int(input())
-    
-    fibonacci(n)
-    if n == 0:
-       print(1, 0)
-    else:
-        print(memo[n - 1], memo[n])
+
+    for i in range(2, n + 1):
+        fib[i] = (fib[i - 1][0] + fib[i - 2][0], fib[i - 1][1] + fib[i - 2][1])
+    print(fib[n][0], fib[n][1])
