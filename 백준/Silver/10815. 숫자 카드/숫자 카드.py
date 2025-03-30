@@ -17,6 +17,8 @@ n = int(input())
 cards = sorted(map(int, input().split()))
 m = int(input())
 numbers = list(map(int, input().split()))
+result = []
 
-for number in numbers:
-    print(binary_search(cards, number, 0, n - 1), end=' ')
+for i in range(m):
+    result.append(binary_search(cards, numbers[i], 0, n - 1))
+print(*result, end=' ')
